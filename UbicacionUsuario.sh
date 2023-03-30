@@ -3,6 +3,9 @@
 declare -i salida=0
 declare -i opt=1
 
+# se logró evitar el ctrl+c y lo reconoce como comando invalido en la ejecución del script
+trap ctrl_c INT
+
 # inicio del segundo script
 while [ $opt != $salida ]
 do
@@ -11,7 +14,7 @@ do
     
     echo "Tu decides si sales $USER"
     read -p "Desea salir [1] o continuar[0]: " salida
-    stty -echoctl
+    echo "$INTRO"
     
 done
 
