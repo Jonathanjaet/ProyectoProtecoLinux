@@ -2,7 +2,8 @@
 
 declare -i salida=0
 declare -i opt=1
-
+# se cancela el uso del ctrl+c mientras ejecuta el script
+trap ctrl_c INT 
 # inicio del segundo script
 while [ $opt != $salida ]
 do
@@ -10,8 +11,9 @@ do
     pwd
     
     echo "Tu decides si sales $USER"
+    
     read -p "Desea salir [1] o continuar[0]: " salida
-    stty -echoctl
+    echo "$INTRO"
     
 done
 
