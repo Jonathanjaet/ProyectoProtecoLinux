@@ -1,10 +1,20 @@
 #!/bin/bash
 
-echo $USER
+declare -i salida=0
+declare -i opt=1
 
-pwd
+# inicio del segundo script
+while [ $opt != $salida ]
+do
+    echo $USER
+    pwd
+    
+    echo "Tu decides si sales $USER"
+    read -p "Desea salir [1] o continuar[0]: " salida
+    stty -echoctl
+    
+done
 
-# fin del segundo script
 # inicio del tercer script
 
 cat .bashrc
