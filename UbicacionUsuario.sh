@@ -1,10 +1,20 @@
 #!/bin/bash
-
 declare -i salida=0
+
 declare -i opt=1
 
 # se logró evitar el ctrl+c y lo reconoce como comando invalido en la ejecución del script
 trap ctrl_c INT
+
+comando=""
+
+fecha=$(date +"Hoy es: %A %d %B")
+
+ram=$(free -t --mega; grep 'MemTotal' /proc/meminfo; grep 'SwapTotal' /proc/mem>
+
+arqui=$(sudo lshw -C CPU | grep width)
+
+versionSO=$(lsb_release -idc)
 
 # inicio del segundo script
 while [ $opt != $salida ]
@@ -13,6 +23,20 @@ do
     pwd
     
     echo "Tu decides si sales $USER"
+    echo "Tus opciones de comandos son: "
+    echo "[ ram, arqui, versionSO , fechaElegante ]" 
+    read -p "Ingrese el comando a leer: " comando
+    # aun por arreglar el if
+    if [ $comando == "fechaElegante" ]
+    then
+           echo "$fechaElegante"
+    elif [ $comando == "ram" ]
+           echo "$ram"
+    elif [ $comando == "versionSO" ]
+           echo "$versionSO"
+    elif [ $comando == "arqui" ]
+           echo "$arqui"
+    fi
     read -p "Desea salir [1] o continuar[0]: " salida
     echo "$INTRO"
     
