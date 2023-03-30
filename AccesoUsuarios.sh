@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "Hola $USER"
+sudo login
 
-cambie algo desde linux
+echo "Hola $USER"
