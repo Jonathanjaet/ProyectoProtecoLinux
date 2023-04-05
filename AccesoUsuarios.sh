@@ -1,4 +1,7 @@
 #!/bin/bash
 
-echo "Hola $USER"
+# primer script
 
+sudo login
+
+echo "Hola $USER"

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-## se realizan comandos para lograr ver la ram, que posteriormente
-## se van a volver alias !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+## son solo comandos, no es funcional para el proyecto
 
 free -t --mega
 
@@ -9,7 +8,7 @@ grep 'MemTotal' /proc/meminfo; grep 'SwapTotal' /proc/meminfo
 
 
 
-## para mostrar la arquitectura de la computadora; se requiere hacer un alias
+## para mostrar la arquitectura de la computadora;
 
 sudo lshw -C CPU | grep width
 
