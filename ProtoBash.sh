@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Colores
+R='\033[1;31m'
+G='\033[1;32m'
+B='\033[1;34m'
+W='\033[0m'
+
+prompt(){
+	printf "$R$(whoami)$W:$B$(pwd)$W~& "
+
+}
+
+# Funcion para manejo de senal SIGINT (^C)
+function sigint_handler(){
+	printf "\nPara salir utilice el comando \'salir\'\n"
+	prompt
+}
+
+# Capturar senal SIGINT (^C)
+trap sigint_handler SIGINT
+
+main(){
+	clear
+
+	while true
+	do
+	prompt
+	read comando
+
+	case $comando in
+		limpiar) clear ;;
+		salir) exit 0 ;;
+		infosis) ./InfoSis.sh ;;
+		tiempo) ;; # ./tiempo.sh
+		ayuda) ;; # cat ayuda.txt
+		jugar) ./gato.sh ;;
+		creditos) cat creditos.txt ;;
+		buscar) ;; # ./buscar.sh
+		*) ;; # comando evaluado en bash
+
+	esac
+	done
+}
+
+main
