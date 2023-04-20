@@ -6,5 +6,5 @@ G='\033[1;32m'
 B='\033[1;34m'
 W='\033[0m'
 
-printf "$R\tFecha:\t$W%(%d/%m/%Y)T"
-printf "$R\tHora:\t$W%(%H:%M:%S2)T"
+printf "$R Fecha:\t$W%(%d/%m/%Y)T\n"
+printf "$R Hora:\t$W%(%H:%M:%S2)T\n"
