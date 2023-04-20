@@ -11,14 +11,16 @@ prompt(){
 
 }
 
-# Funcion para manejo de senal SIGINT (^C)
+# Funcion para manejo de senal SIGINT (^C) y SIGTSTP (^Z)
 function sigint_handler(){
 	printf "\nPara salir utilice el comando \'salir\'\n"
 	prompt
 }
 
-# Capturar senal SIGINT (^C)
-trap sigint_handler SIGINT
+
+
+# Capturar senal SIGINT (^C) y SIGTSTP (^Z)
+trap sigint_handler SIGINT SIGTSTP
 
 main(){
 	clear
@@ -37,7 +39,7 @@ main(){
 		jugar) ./gato.sh ;;
 		creditos) cat creditos.txt ;;
 		buscar) ;; # ./buscar.sh
-		*) ;; # comando evaluado en bash
+		*) $comando ;; # comando evaluado en bash
 
 	esac
 	done
