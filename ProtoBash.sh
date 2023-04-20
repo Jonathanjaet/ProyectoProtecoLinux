@@ -34,7 +34,7 @@ main(){
 		limpiar) clear ;;
 		salir) exit 0 ;;
 		infosis) ./InfoSis.sh ;;
-		tiempo) ;; # ./tiempo.sh
+		tiempo) ./fechaHora.sh ;;
 		ayuda) ;; # cat ayuda.txt
 		jugar) ./gato.sh ;;
 		creditos) cat creditos.txt ;;
