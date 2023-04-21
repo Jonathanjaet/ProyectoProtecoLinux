@@ -1,0 +1,9 @@
+Tu decides si sales $USER
+Tus opciones de comandos son: 
+[ ram, arqui, versionSO , fecha ]
+Ingrese el comando a leer:  
+
+Opcion invalida, ingrese una opcion valida
+Desea salir [1] o continuar[0]: 
+
+Vuelve pronto!
