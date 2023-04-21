@@ -1,19 +1,12 @@
 #!/bin/bash
 
-## son solo comandos, no es funcional para el proyecto
+## ram
 
-free -t --mega
+free -t --mega; grep 'MemTotal' /proc/meminfo; grep 'SwapTotal' /proc/meminfo
 
-grep 'MemTotal' /proc/meminfo; grep 'SwapTotal' /proc/meminfo
+## arquitectura
 
-
-
-## para mostrar la arquitectura de la computadora;
-
-sudo lshw -C CPU | grep width
-
-
-
+uname -m; sudo lshw -C CPU | grep width
 
 ## identificacion de version del SO
 
