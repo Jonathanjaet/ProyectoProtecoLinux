@@ -35,14 +35,15 @@ main(){
 		salir) exit 0 ;;
 		infosis) ./InfoSis.sh ;;
 		tiempo) ./fechaHora.sh ;;
-		ayuda) ;; # cat ayuda.txt
+		ayuda) cat ayuda.txt ;; 
 		jugar) ./gato.sh ;;
 		creditos) cat creditos.txt ;;
-		buscar) ;; # ./buscar.sh
-		*) $comando ;; # comando evaluado en bash
+		buscar) ./busqueda.sh;;
+		*) $comando ;;
 
 	esac
 	done
 }
 
+./verificarUsuario.sh
 main
