@@ -39,6 +39,7 @@ main(){
 		jugar) ./gato.sh ;;
 		creditos) cat creditos.txt ;;
 		buscar) ./busqueda.sh;;
+		audio) ./sistemaAudio.sh;;
 		*) $comando ;;
 
 	esac
