@@ -57,25 +57,34 @@ do
 			echo "		b) Comenzar de nuevo"
 			echo "		d) Regresar"
 			echo "		q) Detener Reproducción"
-			echo "-------------------------------------------"
+			echo "------------------------------------------"
+			echo "		CONTROLES ADICIONALES"
+			echo "------------------------------------------"
+			echo "		+) Subir volumen"
+			echo "		-) Bajar volumen"
+			echo "		u) Silenciar"
+			echo "		l) Listar canciones"
 			mpg123 -C --title -q -z "${dirMusica}"/*
 			;;
 		2) 
 			clear
-			echo "		SELECCION DE CARPETA"
-			echo "------------------------------------------"
+			echo "		  SELECCION DE CARPETA"
+			echo "---------------------------------------------------"
 			echo "	Ingrese la ruta absoluta o relativa de	"
 			echo " 	 de la carpeta donde se encuentre la"
 			echo "			música"
-			read -e dirMusica
+			read -e -p "Ruta: " dirMusica
 			while [ ! -d $dirMusica ]
 			do
 				echo "Esa dirección no es válida, inténtalo nuevamente"
-				read -e $dirMusica
+				read -e -p "Ruta: " dirMusica
 			done
 			;;
 		3) exit 0 ;;
-		*) printf "Opción inválida, elige una opción del menú\n" ;;
+		*) 
+			echo "Opción inválida, elige una opción del menú"
+			sleep 1.5
+			;;
 	esac
 
 done
