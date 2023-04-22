@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Colores
 R='\033[1;31m'
 G='\033[1;32m'
@@ -29,30 +30,51 @@ salir=0
 regresar=0
 
 # Por defecto la musica se toma de la carpeta en el proyecto
-dirMusica=/musiquitaGratis
+dirMusica=musiquitaGratis/
 
 
 while [ $salir -ne 1 ]
 do
 	clear
 	printf "$R PROTOMIXER\n$W"
-	printf "-----------------\n"
-	printf "MENU PRINCIPAL\n"
-	printf "Carpeta actual: $dirMusica"
-	printf "1) Reproducir canciones en modo aleatorio\n"
-	printf "2) Cambiar carpeta\n"
-	printf "3) Salir\n\n"
+	echo "-----------------"
+	echo "MENU PRINCIPAL"
+	echo "Carpeta actual: $dirMusica"
+	echo "1) Reproducir canciones en modo aleatorio"
+	echo "2) Cambiar carpeta"
+	echo "3) Salir"
 
 	printf "Por favor seleccione una opción\n"
-	read opcion
+	read -e opcion
 
 	case $opcion in
 		1) 
 			clear
-			mpg123 -C --title -q -z *.mp3
+			echo "		MENU DE REPRODUCCION"
+			echo "------------------------------------------"
+			echo "		s) Pausar/Reproducir"
+			echo "		f) Siguiente"
+			echo "		b) Comenzar de nuevo"
+			echo "		d) Regresar"
+			echo "		q) Detener Reproducción"
+			echo "-------------------------------------------"
+			mpg123 -C --title -q -z "${dirMusica}"/*
 			;;
-		2) ;;
-		3) ;;
+		2) 
+			clear
+			echo "		SELECCION DE CARPETA"
+			echo "------------------------------------------"
+			echo "	Ingrese la ruta absoluta o relativa de	"
+			echo " 	 de la carpeta donde se encuentre la"
+			echo "			música"
+			read -e dirMusica
+			while [ ! -d $dirMusica ]
+			do
+				echo "Esa dirección no es válida, inténtalo nuevamente"
+				read -e $dirMusica
+			done
+			;;
+		3) exit 0 ;;
 		*) printf "Opción inválida, elige una opción del menú\n" ;;
 	esac
 
