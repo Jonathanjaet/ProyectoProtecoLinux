@@ -24,4 +24,55 @@ fi
 clear
 printf "$R BIENVENIDO A PROTOMIXER\n$W"
 
+# Variables de control
+salir=0
+regresar=0
+
+# Por defecto la musica se toma de la carpeta en el proyecto
+dirMusica=/musiquitaGratis
+
+
+while [ $salir -ne 1 ]
+do
+	clear
+	printf "$R PROTOMIXER\n$W"
+	printf "-----------------\n"
+	printf "MENU PRINCIPAL\n"
+	printf "Carpeta actual: $dirMusica"
+	printf "1) Reproducir canciones en modo aleatorio\n"
+	printf "2) Cambiar carpeta\n"
+	printf "3) Salir\n\n"
+
+	printf "Por favor seleccione una opción\n"
+	read opcion
+
+	case $opcion in
+		1) 
+			clear
+			mpg123 -C --title -q -z *.mp3
+			;;
+		2) ;;
+		3) ;;
+		*) printf "Opción inválida, elige una opción del menú\n" ;;
+	esac
+
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
