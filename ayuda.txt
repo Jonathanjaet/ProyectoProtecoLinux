@@ -36,6 +36,9 @@ Bueno, para comenzar cuando estas en el modo terminal, la única forma de salir 
 	buscar
         Arranca y pone en funcionamiento el shell script capaz de buscar por nombre de archivo con el parametro de 
               nombre de directorio, dicho archivo
+	      
+	audio
+	Activa el sistema de música del shell script que se creó para reproducir música manualmente desde la terminal
               
 Y como comentario final, se menciona que los comandos creados y administrados por el mismo bash, se pueden usar de 
       forma habitual siempre y cuando no sean los de salir, que de forma habitual es exit, y el comando que fuerza 
