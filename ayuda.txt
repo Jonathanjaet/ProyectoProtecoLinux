@@ -9,36 +9,37 @@ Bueno, para comenzar cuando estas en el modo terminal, la única forma de salir 
   script como habitualmente se hace con CONTROL+Z o CONTROL+C, ya con esto mencionado se muestran lo que puedes ejecutar de 
   forma añadida, ya que son nuevos comandos que agregamos en este shell script, son los siguientes comandos:
   
-  limpiar
-          El cual logra limpiar el prompt en pantalla de la terminal
+  	limpiar
+          	El cual logra limpiar el prompt en pantalla de la terminal
           
 	salir
-          Que como ya se mencionó, sirve para salir del sistema del shell script y su terminal
+          	Que como ya se mencionó, sirve para salir del sistema del shell script y su terminal
           
 	infosis
-          Se muestra la diferente información del sistema los cuales son 
-                ram
-                arquitectura
-                identificacion de version del SO
-          
-  tiempo
-        Se muestra en formato dd/mm/aa con HH:MM:SS la fecha y hora del sistema 
+          	Se muestra la diferente información del sistema los cuales son 
+			ram
+			arquitectura
+			identificacion de version del SO
+
+  	tiempo
+        	Se muestra en formato dd/mm/aa con HH:MM:SS la fecha y hora del sistema 
         
 	ayuda
-        Que como ya descubriste, sirve para mostrar este grandioso texto con la ayuda necesaria para entender mejor los
-            comandos que se estan ingresando y que se pueden ingresar
+        	Que como ya descubriste, sirve para mostrar este grandioso texto con la ayuda necesaria para entender mejor los
+            	comandos que se estan ingresando y que se pueden ingresar
+	
 	jugar
-        Comando que activa la función del juego clásico de gato
+        	Comando que activa la función del juego clásico de gato
         
 	creditos
-        Muestra el documentos donde se presentan los créditos correspondientes por cada material
+        	Muestra el documentos donde se presentan los créditos correspondientes por cada material
   
 	buscar
-        Arranca y pone en funcionamiento el shell script capaz de buscar por nombre de archivo con el parametro de 
-              nombre de directorio, dicho archivo
+        	Arranca y pone en funcionamiento el shell script capaz de buscar por nombre de archivo con el parametro de 
+              	nombre de directorio, dicho archivo
 	      
 	audio
-	Activa el sistema de música del shell script que se creó para reproducir música manualmente desde la terminal
+		Activa el sistema de música del shell script que se creó para reproducir música manualmente desde la terminal
               
 Y como comentario final, se menciona que los comandos creados y administrados por el mismo bash, se pueden usar de 
       forma habitual siempre y cuando no sean los de salir, que de forma habitual es exit, y el comando que fuerza 
