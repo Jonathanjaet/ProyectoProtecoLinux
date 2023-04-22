@@ -9,12 +9,21 @@ SIMBOLO_JUGADOR2=O
 
 # Funcion para dibujar el tablero
 dibujarTablero() {
-	echo "Jugador 1: ${SIMBOLO_JUGADOR1}, Jugador 2: ${SIMBOLO_JUGADOR2}"
-	echo " ${s[7]} | ${s[8]} | ${s[9]} "
-	echo "---+---+---"
-	echo " ${s[4]} | ${s[5]} | ${s[6]} "
-	echo "---+---+---"
-	echo " ${s[1]} | ${s[2]} | ${s[3]} "
+
+	echo "    _  _    _____       _          _  _   "
+	echo "  _| || |_ / ____|     | |       _| || |_ "
+	echo " |_  __  _| |  __  __ _| |_ ___ |_  __  _|"
+	echo "  _| || |_| | |_ |/ _' | __/ _ \ _| || |_ "
+	echo " |_  __  _| |__| | (_| | || (_) |_  __  _|"
+	echo "   |_||_|  \_____|\__,_|\__\___/  |_||_|  "
+
+
+	echo " 	  Jugador 1: ${SIMBOLO_JUGADOR1}, Jugador 2: ${SIMBOLO_JUGADOR2}"
+	echo "		${s[7]} | ${s[8]} | ${s[9]} "
+	echo "		---+---+---"
+	echo "		${s[4]} | ${s[5]} | ${s[6]} "
+	echo "		---+---+---"
+	echo "		${s[1]} | ${s[2]} | ${s[3]} "
 }
 
 # Expresion regular para verificar que el valor este entre 1 y 9
@@ -22,15 +31,15 @@ RANGO_NUM='^[1-9]$'
 
 # Funcion para pedirle al jugador 1 su entrada
 Turno_jugador1() {
-	printf "Enter your choice (1-9):"
+	printf "	Elige una casilla (1-9):"
 	read casilla
 	if ! [[ $casilla =~ $RANGO_NUM ]]; then
-		echo "Debes escoger un numero entre 1 y 9"
+		echo "	  Debes escoger un numero entre 1 y 9"
 		Turno_jugador1
 	fi
 
 	if ! [[ ${s[$casilla]} =~ $RANGO_NUM ]]; then
-		echo "Casilla ocupada"
+		echo "	  Casilla ocupada"
 		Turno_jugador1
 	fi
 	s[$casilla]=$SIMBOLO_JUGADOR1
@@ -38,15 +47,15 @@ Turno_jugador1() {
 
 # Funcion para pedirle al jugador 2 su entrada
 Turno_jugador2(){
-	printf "Enter your choice (1-9):"
+	printf "	Elige una casilla (1-9):"
 	read casilla
 	if ! [[ $casilla =~ $RANGO_NUM ]]; then
-		echo "Debes escoger un numero 1 y 9"
+		echo "	  Debes escoger un numero 1 y 9"
 		Turno_jugador2
 	fi
 
 	if ! [[ ${s[$casilla]} =~ $RANGO_NUM ]]; then
-		echo "Casilla ocupada"
+		echo "	  Casilla ocupada"
 		Turno_jugador2
 	fi
 	s[$casilla]=$SIMBOLO_JUGADOR2
@@ -63,10 +72,11 @@ jugador() {
 # Funcion para mostrar al ganador
 gana() {
 	local GANADOR=$1
-	echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-	echo "       $(jugador $GANADOR) gana!       "
-	echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-	dibujarTablero
+	echo "		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+	echo "		     $(jugador $GANADOR) gana!"
+	echo "		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+	echo ""
+	read -p "Presiona una tecla para continuar" buffer_tecla
 	exit 0
 }
 
@@ -92,17 +102,21 @@ verificarGanador(){
 	# Evaluar diagonales
 	GANADOR=${s[5]}
 	[[ ${s[1]} == ${s[5]} ]] && [[ ${s[5]} == ${s[9]} ]] && gana $GANADOR
-	[[ ${s[7]} == ${s[5]} ]] && [[ ${s[5]} == ${s[3]} ]] && $GANADOR
+	[[ ${s[7]} == ${s[5]} ]] && [[ ${s[5]} == ${s[3]} ]] && gana $GANADOR
 	
 }
 
 
-dibujarTablero
 while true; do
+	clear
+	dibujarTablero
+	printf "$R	Turno jugador 1$W"
 	Turno_jugador1
 	verificarGanador
+	echo ""
+	printf "$B	Turno jugador 2$W"
 	Turno_jugador2
-	dibujarTablero
+	verificarGanador
 done
 
 
