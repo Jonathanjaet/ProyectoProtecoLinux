@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap - SIGTSTP SIGINT SIGTERM
+
 # Colores
 R='\033[1;31m'
 G='\033[1;32m'
@@ -18,20 +20,21 @@ echo "██   ██ ██   ██ ██    ██    ██    ██    �
 echo "██████  ██████  ██    ██    ██    ██    ██ ██████  ███████ ███████ ███████ "
 echo "██      ██   ██ ██    ██    ██    ██    ██ ██   ██ ██   ██      ██ ██   ██ "
 echo "██      ██   ██  ██████     ██     ██████  ██████  ██   ██ ███████ ██   ██ "
+echo ""
 
 # El codigo a continuacion no es de autoria propia, sino una adaptacion de codigo original de John y Abraham
 # Lea la documentacion para entender bien el funcionamiento de este comando. Vale completamente la pena.
 
-printf "$G Usuario: $W"
+printf "			$G Usuario: $W"
 read  usuario
-printf "$G Password: $W"
+printf "			$G Password: $W"
 read -s password
 
 cadena=`sudo -S grep -r $usuario /etc/shadow`
 
 if [ ! ${cadena} > 1 ]; then
 	
-	printf "\n$R El usuario o contraseña son incorrectos, inténtelo nuevamente$W"
+	printf "  \n$R El usuario o contraseña son incorrectos, inténtelo nuevamente$W"
 	sleep 2
 
 else
@@ -45,7 +48,7 @@ else
 	match=`echo "$cadena" | grep -c "$hash"`
 
 	if [ "$match" -ne 1 ]; then
-		printf "\n$R Usuario o contraseña incorrectos, inténtelo nuevamente$W"
+		printf "  \n$R Usuario o contraseña incorrectos, inténtelo nuevamente$W"
 		sleep 2
 	fi
 fi

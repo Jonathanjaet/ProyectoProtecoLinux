@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Colores
+R='\033[1;31m'
+G='\033[1;32m'
+B='\033[1;34m'
+M='\033[1;35m' # Magenta
+W='\033[0m'
+
 # Se declara en un arreglo los valores que simbolizan cada casilla
 s=([1]=1 [2]=2 [3]=3 [4]=4 [5]=5 [6]=6 [7]=7 [8]=8 [9]=9)
 
@@ -10,20 +17,22 @@ SIMBOLO_JUGADOR2=O
 # Funcion para dibujar el tablero
 dibujarTablero() {
 
-	echo "    _  _    _____       _          _  _   "
-	echo "  _| || |_ / ____|     | |       _| || |_ "
-	echo " |_  __  _| |  __  __ _| |_ ___ |_  __  _|"
-	echo "  _| || |_| | |_ |/ _' | __/ _ \ _| || |_ "
-	echo " |_  __  _| |__| | (_| | || (_) |_  __  _|"
-	echo "   |_||_|  \_____|\__,_|\__\___/  |_||_|  "
-
-
-	echo " 	  Jugador 1: ${SIMBOLO_JUGADOR1}, Jugador 2: ${SIMBOLO_JUGADOR2}"
-	echo "		${s[7]} | ${s[8]} | ${s[9]} "
-	echo "		---+---+---"
-	echo "		${s[4]} | ${s[5]} | ${s[6]} "
-	echo "		---+---+---"
-	echo "		${s[1]} | ${s[2]} | ${s[3]} "
+	printf "$M    _  _    _____       _          _  _\n"
+	printf "  _| || |_ / ____|     | |       _| || |_\n"
+	printf " |_  __  _| |  __  __ _| |_ ___ |_  __  _|\n"
+	printf "  _| || |_| | |_ |/ _' | __/ _ \ _| || |\n"
+	printf " |_  __  _| |__| | (_| | || (_) |_  __  _|\n"
+	printf "   |_||_|  \_____|\__,_|\__\___/  |_||_|  $W\n"
+	echo ""
+	printf "$M=================================================$W"
+	echo ""
+	printf "$R 	  Jugador 1: ${SIMBOLO_JUGADOR1}$W, $B Jugador 2: ${SIMBOLO_JUGADOR2}$W\n"
+	echo ""
+	printf "		${s[7]} | ${s[8]} | ${s[9]}\n"
+	echo "               ---+---+---"
+	printf "		${s[4]} | ${s[5]} | ${s[6]}\n"
+	echo "               ---+---+---"
+	printf "		${s[1]} | ${s[2]} | ${s[3]}\n"
 }
 
 # Expresion regular para verificar que el valor este entre 1 y 9
@@ -72,11 +81,12 @@ jugador() {
 # Funcion para mostrar al ganador
 gana() {
 	local GANADOR=$1
-	echo "		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-	echo "		     $(jugador $GANADOR) gana!"
-	echo "		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+	echo "    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+	echo "	     $(jugador $GANADOR) gana!"
+	echo "    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 	echo ""
-	read -p "Presiona una tecla para continuar" buffer_tecla
+	read -p "Ingresa una tecla para continuar: " buffer_tecla
+	clear
 	exit 0
 }
 
@@ -110,11 +120,11 @@ verificarGanador(){
 while true; do
 	clear
 	dibujarTablero
-	printf "$R	Turno jugador 1$W"
+	printf "\n$R	Turno jugador 1$W"
 	Turno_jugador1
 	verificarGanador
 	echo ""
-	printf "$B	Turno jugador 2$W"
+	printf "\n$B	Turno jugador 2$W"
 	Turno_jugador2
 	verificarGanador
 done
